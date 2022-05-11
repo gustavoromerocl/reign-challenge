@@ -3,27 +3,28 @@
 
 ### Introducción
 
-
+Prueba técnica para la empresa Reign
 
 ### Contexto 
 
-
+Se solicita crear una spa que consume un api-rest de noticias 
 
 ### Solución
 
-
+Lo solución se realizará con react-js
 
 ### Entorno de desarrollo (pre-requisitos)
+
 - Node JS v16.13.1  
 
 ### Stack
 
-- reactJS 18.1.0
-
+- react-js v18.1.0
 
 ### Dependencias
 
-- react-router-dom 6.3.0
+- react-router-dom v6.3.0
+- styled-components v5.3.5
 
 ### Instalación local
 

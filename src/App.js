@@ -1,17 +1,17 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-let Hello = () => {
-  return <h1>Hola mundo</h1>
-}
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './routes';
+import theme, { GlobalStyles } from './theme';
+import { ThemeProvider } from 'styled-components';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Hello/>}/>
-        </Routes>
+        <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <AppRoutes/>
+        </ThemeProvider>
       </BrowserRouter>
     </div>
   );
