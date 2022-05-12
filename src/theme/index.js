@@ -94,8 +94,9 @@ export let LayoutContainer = styled.div`
   }
 `;
 
-/**Contenerdor que restringe el tamaño máximo y le entrega un margen horizontal */
+/**Contenedor que restringe el tamaño máximo y le entrega un margen horizontal */
 export let Container = styled.div`
   max-width: 100vw;
+  height: 100%;
   margin: ${ ({theme}) => theme.dims.margin.small };
 `;
