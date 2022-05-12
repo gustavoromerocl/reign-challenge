@@ -1,8 +1,8 @@
-import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routes';
 import theme, { GlobalStyles } from './theme';
 import { ThemeProvider } from 'styled-components';
+import Layout from './components/Layout';
 
 function App() {
   return (
@@ -10,7 +10,9 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <AppRoutes/>
+            <Layout>
+              <AppRoutes/>
+            </Layout>
         </ThemeProvider>
       </BrowserRouter>
     </div>
