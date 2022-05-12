@@ -17,6 +17,7 @@ export default {
     hardGray: "#606060",
     lightskyBlue: "#1797ff",
     skyBlue: "#1890ff",
+    azure: "#1797ff",
   },
   fonts: {
     family: {
@@ -37,7 +38,7 @@ export default {
     light: 'solid 1px #d6d6d6',
     medium: 'solid 1px #979797',
     hard: 'solid 1px #2e2e2e',
-    sky: 'solid 1px var(--azure)',
+    sky: 'solid 1px #1797ff',
   },
   dims: {
     widths: {
