@@ -24,7 +24,10 @@ export default {
   fonts: {
     family: {
       brandTitle: 'Libre Baskerville',
-      general: 'Roboto',
+      roboto: {
+        regular: 'Roboto Regular',
+        medium: 'Roboto Medium'
+      }
     },
     weight: {
       normal: 'normal',
@@ -65,16 +68,20 @@ export default {
     },
     borderRadius: {
       small: '2px',
-      medium: '6px',
+      medium: '4px',
+      big: '6px',
     },
     fonts: {},
     circle: {},
   },
   shadows: {
-    soft: '0 1px 4px 0 rgba(0, 21, 41, 0.12)',
+    leftBottom: '0 1px 4px 0 rgba(0, 21, 41, 0.12)',
   },
   opacity: {
     soft: '0.06',
+  },
+  animations: {
+    transition: 'all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)',
   }
 }
 
@@ -99,7 +106,7 @@ export let LayoutContainer = styled.div`
 
   & nav {
     height: 114px;
-    box-shadow: ${({theme}) => theme.shadows.soft};
+    box-shadow: ${({theme}) => theme.shadows.leftBottom};
     background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
     color: ${({theme}) => theme.colors.mediumGray};
     font-family: ${({theme}) => theme.fonts.family.brandTitle};

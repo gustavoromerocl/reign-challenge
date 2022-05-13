@@ -26,7 +26,7 @@ export default styled(Card)`
     background-color: ${({ theme }) => theme.colors.white};
     height: ${({ theme }) => theme.dims.heights.medium};
     width: ${({ theme }) => theme.dims.widths.extraLarge};
-    border-radius: ${({ theme }) => theme.dims.borderRadius.medium};
+    border-radius: ${({ theme }) => theme.dims.borderRadius.big};
     border: ${({ theme }) => theme.borders.medium};
     display: flex;
     justify-content: space-between;

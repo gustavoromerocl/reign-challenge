@@ -11,7 +11,7 @@ let Page = styled.a`
   align-items: center;
   justify-content: center;
   border: ${({theme}) => theme.borders.light};
-  border-radius: ${({theme}) => theme.dims.borderRadius.medium};
+  border-radius: ${({theme}) => theme.dims.borderRadius.big};
   text-decoration: none;
   margin-left: ${({theme}) => theme.dims.margin.smallLeft};
   &:hover {
