@@ -18,6 +18,8 @@ export default {
     lightskyBlue: "#1797ff",
     skyBlue: "#1890ff",
     azure: "#1797ff",
+    muted: "#767676",
+    rgbaGray: "rgba(96, 96, 96, 0.06)",
   },
   fonts: {
     family: {
@@ -42,10 +44,21 @@ export default {
   },
   dims: {
     widths: {
-      small: '30rem',
-      medium: '40rem',
+      verySmall: '16px',
+      small: '32px',
+      medium: '98px',
+      large: '240px',
+      extraLarge: '550px',
     },
-    padding: {},
+    heights: {
+      verySmall: '16px',
+      small: '32px',
+      medium: '90px',             
+    },
+    padding: {
+      verySmall: '7px',
+      medium: '24px 22px'
+    },
     margin: {
       small: '0 150px'
     },
@@ -58,6 +71,9 @@ export default {
   },
   shadows: {
     soft: '0 1px 4px 0 rgba(0, 21, 41, 0.12)',
+  },
+  opacity: {
+    soft: '0.06',
   }
 }
 

@@ -25,6 +25,7 @@ Lo solución se realizará con react-js
 
 - react-router-dom v6.3.0
 - styled-components v5.3.5
+- hero-icons v1.0.6
 
 ### Instalación local
 
