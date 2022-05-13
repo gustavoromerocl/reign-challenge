@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './components/Card'
+import Pagination from './components/Pagination'
 import RadioButton from './components/RadioButton'
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div>
       <RadioButton />
       <Card />
+      <Pagination />
     </div>
   )
 }

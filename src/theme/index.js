@@ -60,6 +60,7 @@ export default {
       medium: '24px 22px'
     },
     margin: {
+      smallLeft: '8px',
       small: '0 150px'
     },
     borderRadius: {
