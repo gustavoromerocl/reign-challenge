@@ -41,7 +41,7 @@ function RadioButton(props) {
           type="radio"
           name="hackernews"
           value="all"
-          checked
+          defaultChecked
         />
         <Label htmlFor="allnews">All</Label>
       </div>

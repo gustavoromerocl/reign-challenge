@@ -14,6 +14,7 @@ let Page = styled.a`
   border-radius: ${({theme}) => theme.dims.borderRadius.big};
   text-decoration: none;
   margin-left: ${({theme}) => theme.dims.margin.smallLeft};
+  
   &:hover {
     background-color: ${({theme}) => theme.colors.softGray};
   }
@@ -26,7 +27,7 @@ const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 function Pagination(props) {
 
-  const Pages = numbers.map((el) => <Page href='#'><p className='number'>{el + 1}</p></Page>)
+  const Pages = numbers.map((el, index) => <Page href='#' key={index}>{el + 1}</Page>)
   return (
     <div className={`container-pagination ${props.className}`}>
       <Page>
@@ -47,8 +48,9 @@ export default styled(Pagination)`
     text-align: center;
     font-size: ${({theme}) => theme.fonts.size.medium};
 
-    .number{
-      display: inline-block;
+    a:link, a:visited, a:active {
+      text-decoration:none;
+      color: ${({theme}) => theme.colors.black65};
     }
 
     svg {

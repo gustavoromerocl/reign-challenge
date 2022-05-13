@@ -12,7 +12,7 @@ function Card(props) {
           <ClockIcon />
           <p className='text'>3 hours ago by author</p>
         </div>
-        <h5>Yes, React is taking over front-end development. The question is why.</h5>
+        <h5>All the fundamental React.js concepts, jammed into this single Medium article (updated August 2019)</h5>
       </div>
       <div className='heart'>
         <HeartIconSolid />
@@ -32,7 +32,11 @@ export default styled(Card)`
     justify-content: space-between;
 
     .contain-card{
-      padding: ${({ theme }) => theme.dims.padding.medium};
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 80%;
+      margin: ${({theme}) => theme.dims.margin.horizontalCenter};
 
       .time {
         display: flex;
@@ -54,9 +58,9 @@ export default styled(Card)`
       }
 
       h5 {
+        font-family: ${({theme}) => theme.fonts.family.roboto.medium};
         font-size: ${({ theme }) => theme.fonts.size.gray};
         color: ${({ theme }) => theme.colors.gray};
-        
       }
     }
 

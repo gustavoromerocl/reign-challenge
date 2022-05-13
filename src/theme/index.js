@@ -20,6 +20,7 @@ export default {
     azure: "#1797ff",
     muted: "#767676",
     rgbaGray: "rgba(96, 96, 96, 0.06)",
+    black65: "rgba(0, 0, 0, 0.65)"
   },
   fonts: {
     family: {
@@ -64,7 +65,8 @@ export default {
     },
     margin: {
       smallLeft: '8px',
-      small: '0 150px'
+      small: '0 150px',
+      horizontalCenter: '0 auto',
     },
     borderRadius: {
       small: '2px',
