@@ -1,9 +1,9 @@
 import React from 'react';
-import { LayoutContainer } from '../theme';
-import { Container } from '../theme';
+import { LayoutContainer, Container, Container as ContainerOverride } from '../theme';
 import styled from 'styled-components';
 import Header from './Header';
-import { Container as ContainerOverride} from '../theme';
+import RadioButton from './RadioButton';
+import Pagination from './Pagination';
 
 /**Se sobreescribe el componente Container para alinear el logo en el encabezado, a su vez se asigna un alias para evitar conflictos de nombre */
 let ContainerNav = styled(ContainerOverride)`
@@ -12,20 +12,39 @@ let ContainerNav = styled(ContainerOverride)`
   align-items: center;
 `;
 
+/**Contenido principal*/
+let BodyContainer = styled.div`
+  max-width: 100vw;
+  max-height: 70vh;
+  overflow-y: scroll;
+  margin: ${ ({theme}) => theme.dims.margin.small };
+`
+
+let HeadContainer = styled.div`
+  padding: ${({theme}) => theme.dims.padding.big} 0;
+`;
+
 export default function Layout(props) {
   return (
-    <LayoutContainer>
+    <LayoutContainer className={props.className}>
       <nav>
         <ContainerNav>
           <Header />
         </ContainerNav>
       </nav>
       <main>
-        <Container>
+        <HeadContainer>
+          <RadioButton />
+        </HeadContainer>
+        
+        <BodyContainer>
           {props.children}
-        </Container>
+        </BodyContainer>
       </main>
-      <footer></footer>
+      <footer>
+          <Pagination />
+      </footer>
     </LayoutContainer>
   )
 }
+

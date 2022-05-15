@@ -13,13 +13,10 @@ let Page = styled.a`
   border: ${({theme}) => theme.borders.light};
   border-radius: ${({theme}) => theme.dims.borderRadius.big};
   text-decoration: none;
-  margin-left: ${({theme}) => theme.dims.margin.smallLeft};
-  
+  margin-left: ${({theme}) => theme.dims.margin.smallLeft};  
   &:hover {
     background-color: ${({theme}) => theme.colors.softGray};
   }
-
-
 `;
 
 /**Array de números para simular las paginas desde la api */
@@ -47,7 +44,7 @@ export default styled(Pagination)`
     justify-content: center;
     text-align: center;
     font-size: ${({theme}) => theme.fonts.size.medium};
-
+    
     a:link, a:visited, a:active {
       text-decoration:none;
       color: ${({theme}) => theme.colors.black65};

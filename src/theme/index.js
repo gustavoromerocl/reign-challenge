@@ -61,7 +61,8 @@ export default {
     },
     padding: {
       verySmall: '7px',
-      medium: '24px 22px'
+      big: '40px',
+      mediumyx: '24px 22px'
     },
     margin: {
       smallLeft: '8px',
@@ -70,7 +71,7 @@ export default {
     },
     borderRadius: {
       small: '2px',
-      medium: '4px',
+      medium: '10px',
       big: '6px',
     },
     fonts: {},
@@ -117,8 +118,14 @@ export let LayoutContainer = styled.div`
   /* Estilos del footer */
 
   & footer{
-
+    position: fixed;
+    width: 100%;
+    padding: 98px 0;
+    bottom: 0;
+    background-color: white;
   }
+
+  /**Estilos del container */
 `;
 
 /**Contenedor que restringe el tamaño máximo y le entrega un margen horizontal */
@@ -126,4 +133,12 @@ export let Container = styled.div`
   max-width: 100vw;
   height: 100%;
   margin: ${ ({theme}) => theme.dims.margin.small };
+`;
+
+/**Flex containers */
+
+export let CenterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

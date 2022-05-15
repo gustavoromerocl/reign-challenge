@@ -1,21 +1,41 @@
-/**https://github.com/tailwindlabs/heroicons */
-import React from 'react'
+/**https://github.com/tailwindlabs/heroicons 
+ * https://momentjs.com/
+*/
+
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { ClockIcon, HeartIcon } from '@heroicons/react/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/solid'
+import moment from 'moment';
 
-function Card(props) {
+function Card({className, author, storyTitle, storyUrl, createdAt}) {
+  const [hoursAgo, setHoursAgo] = useState('');
+
+  function differenceDate() {
+    let postDate = moment(new Date(createdAt)); //Formatear fecha para que entrega diferencia conrrecta en horas
+    let currentDate = moment(new Date());
+    
+    let duration = moment.duration(currentDate.diff(postDate));
+    let hours = Math.round(duration.asHours());
+    
+    setHoursAgo(hours);
+  } 
+
+  useEffect(()=> {
+    differenceDate();
+  },[]);
+
   return (
-    <div className={`container-card ${props.className}`}>
+    <div className={`container-card ${className}`}>
       <div className='contain-card'>
         <div className='time'>
           <ClockIcon />
-          <p className='text'>3 hours ago by author</p>
+          <p className='text'>{hoursAgo == 0 ? 'recently' : `${hoursAgo} hours ago`} by {`${author}`} </p>
         </div>
-        <h5>All the fundamental React.js concepts, jammed into this single Medium article (updated August 2019)</h5>
+        <h5>{`${storyTitle}`}</h5>
       </div>
       <div className='heart'>
-        <HeartIconSolid />
+        <HeartIcon />
       </div>
     </div>
   )
@@ -29,8 +49,9 @@ export default styled(Card)`
     border-radius: ${({ theme }) => theme.dims.borderRadius.big};
     border: ${({ theme }) => theme.borders.medium};
     display: flex;
+    flex: 1 1 400px;
     justify-content: space-between;
-
+    margin: 10px;
     .contain-card{
       display: flex;
       flex-direction: column;
