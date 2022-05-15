@@ -1,4 +1,5 @@
 /**https://styled-components.com/docs/basics#passed-props */
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 /**Componentes creados con styled components */
@@ -18,48 +19,79 @@ let Label = styled.label`
   font-style: normal;
   line-height: 1.75;
   letter-spacing: normal;
-
+  color: ${({ theme }) => theme.colors.gray};
+  border: ${({ theme }) => theme.borders.medium};
   /**Estilos para input seleccionado */
-  ${Input}:checked + && {
+  &.checked {
     color: ${({ theme }) => theme.colors.azure};
     border: ${({ theme }) => theme.borders.sky};
-  };
-
+  }
   /**Estilos para input no seleccionado */
-  ${Input}:not(:checked) + && {
-    color: ${({ theme }) => theme.colors.gray};
-    border: ${({ theme }) => theme.borders.medium};
-  };
+  a:link, a:visited, a:active {
+    text-decoration:none;
+    color: ${({theme}) => theme.colors.black65};
+    width:100%;
+  }
 `;
 
 function RadioButton(props) {
+  
+  /**Funcion que intercambia al clase con el efecto de selección */
+  const ToggleChecked = (ev) => {
+    let allTab = document.getElementById("allnews");
+    let favesTab = document.getElementById("myfavoritenews");
+    let currentTarget = ev.target.parentNode;
+
+    /**Si el elemento contiene la clase checked termina la ejecucion */
+    if(currentTarget.classList.contains('checked')) return;
+
+    
+    if(currentTarget.getAttribute("for") === allTab.getAttribute("for")) {
+      favesTab.classList.remove("checked");
+      allTab.classList.add("checked");
+    } else {
+      allTab.classList.remove("checked");
+      favesTab.classList.add("checked");
+    }
+
+  }
+
   return (
     <div className={props.className}>
       <div>
         <Input
-          id="allnews"
           type="radio"
           name="hackernews"
-          value="all"
+          value="allnews"
           defaultChecked
         />
-        <Label htmlFor="allnews">All</Label>
+        <Label htmlFor="allnews" id="allnews" onClick={ToggleChecked}>
+          <Link to="/" onClick={ToggleChecked}>All</Link> 
+        </Label>
       </div>
       <div>
         <Input
-          id="myfavoritenews"
-          type={"radio"}
+          
+          type="radio"
           name="hackernews"
-          value={"myfaves"} />
-        <Label htmlFor="myfavoritenews">My faves</Label>
+          value="myfavoritenews" 
+          />
+        <Label htmlFor="myfavoritenews" id="myfavoritenews">
+          <Link to="/faves" onClick={ToggleChecked}>My faves</Link>
+        </Label>
       </div>
     </div>
   )
 }
 
 export default styled(RadioButton)`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  &{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+  }
+
 `;
