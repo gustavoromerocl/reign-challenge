@@ -6,6 +6,7 @@ import Spinner from '../components/Spinner';
 import useNewsStore from '../zustand/news-store';
 import shallow from "zustand/shallow";
 import Dropdown from '../components/Dropdown';
+import NewsList from '../components/NewsList';
 
 function Home(props) {
   const {
@@ -37,11 +38,7 @@ function Home(props) {
       <div className='cards-container'>
         <Dropdown />
         {isFetchingNews && <Spinner />}
-        {/*Se mapea el array con la información de la api para contruir las cards con la info*/
-          
-          news.map(({ author, story_title, story_url, created_at, created_at_i }) =>
-            <Card author={author} storyTitle={story_title} storyUrl={story_url} createdAt={created_at} key={created_at_i.toString()} />)
-        }
+        <NewsList data={news}/>
         {fetchNewsError && <div>Error 404 Not found</div>}
         {/*   */}
 
