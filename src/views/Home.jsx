@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import Card from '../components/Card';
 import Spinner from '../components/Spinner';
 /* Importamos la store de zustand */
 import useNewsStore from '../zustand/news-store';
@@ -34,25 +32,13 @@ function Home(props) {
   }, [page, filter]);
 
   return (
-    <div className={`home-container ${props.className}`}>
-      <div className='cards-container'>
+    <div>
         <Dropdown />
         {isFetchingNews && <Spinner />}
         <NewsList data={news}/>
         {fetchNewsError && <div>Error 404 Not found</div>}
-        {/*   */}
-
-      </div>
     </div>
   )
 }
 
-export default styled(Home)`
-  &.home-container{
-
-    .cards-container{
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-`;
+export default Home;

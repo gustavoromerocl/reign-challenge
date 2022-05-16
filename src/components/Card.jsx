@@ -7,17 +7,38 @@ import styled from 'styled-components';
 import { ClockIcon, HeartIcon } from '@heroicons/react/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/solid'
 import moment from 'moment';
+import useFavesStore from '../zustand/faves-store';
 
-function Card({className, author, storyTitle, storyUrl, createdAt}) {
+function Card({className, author, storyTitle, storyUrl, createdAt, createdId}) {
   const [hoursAgo, setHoursAgo] = useState('');
 
+  /**Zustand store */
+  const {
+    saveFaves,
+  } = useFavesStore( (state) => ({
+    saveFaves: state.saveFaves,
+  }));
+
+  const favesObject = {
+    author: author,
+    story_title: storyTitle,
+    story_url: storyUrl,
+    created_at: createdAt, 
+    created_at_i: createdId,
+  }
+
   function differenceDate() {
-    let postDate = moment(new Date(createdAt)); //Formatear fecha para que entrega diferencia conrrecta en horas
+    /**Tranforma las fechas a formato date */
+    let postDate = moment(new Date(createdAt)); 
     let currentDate = moment(new Date());
-    
+   
+    /**Cacula la diferencia entre ambas fechas */
     let duration = moment.duration(currentDate.diff(postDate));
+
+    /**Se asigna la conversión del tiempo a horas */
     let hours = Math.round(duration.asHours());
     
+    /**Se actualiza el estado local */
     setHoursAgo(hours);
   } 
 
@@ -35,7 +56,7 @@ function Card({className, author, storyTitle, storyUrl, createdAt}) {
         <h5>{`${storyTitle}`}</h5>
       </div>
       <div className='heart'>
-        <HeartIcon />
+        <HeartIcon onClick={() => saveFaves(favesObject)}/>
       </div>
     </div>
   )
