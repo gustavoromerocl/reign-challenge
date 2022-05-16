@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ChevronLeftIcon } from '@heroicons/react/outline';
 import { ChevronRightIcon } from '@heroicons/react/outline';
-import axios from 'axios';
 /* Importamos la store de zustand */
 import useNewsStore from '../zustand/news-store';
 /**Se importa shallow utilidad de zustand
@@ -30,21 +29,16 @@ let Page = styled.a`
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 function Pagination(props) {
-  const [currentPage, setCurrentPage] = useState(1);
   const {
-    fetchNews,
+    setPage,
   } = useNewsStore((state) => ({
     /**Les asignamos a las variables creadas el state de la store de zustand */
-    fetchNews: state.fetchNews,
+    setPage: state.setPage
     /**Shallow restringe el re renderizado de los componentes, lo que mejora el performance de la app*/
   }), shallow);
   
-  useEffect(() => {
-    fetchNews(currentPage);
-  }, [currentPage]);
-
   /**PENDIENTE IMPLEMENTAR CONTROLADOR PARA LAS PAGINAS  */
-  const Pages = numbers.map((el, index) => <Page href='#' onClick={() => setCurrentPage(el)} key={index}>{el + 1}</Page>)
+  const Pages = numbers.map((el, index) => <Page href='#' onClick={() => setPage(el)} key={index}>{el + 1}</Page>)
   return (
     <div className={`container-pagination ${props.className}`} >
       <Page>
