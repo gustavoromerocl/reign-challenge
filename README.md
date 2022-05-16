@@ -28,6 +28,7 @@ Lo solución se realizará con react-js
 - hero-icons v1.0.6
 - axios v0.21.1
 - momentjs v2.29.3
+- zustand v4.0.0-rc.1
 
 ### Instalación local
 

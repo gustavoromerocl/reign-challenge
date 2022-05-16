@@ -1,38 +1,39 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Card from '../components/Card';
-import Dropdown from '../components/Dropdown';
-import Pagination from '../components/Pagination';
-
+/* Importamos la store de zustand */
+import useNewsStore from '../zustand/news-store';
 
 function Home(props) {
-  const [result, setResult] = useState([]);
+  const {
+    fetchNews,
+    isFetchingNews,
+    fetchNewsError,
+    news
+  } = useNewsStore((state) => ({
+    /**Les asignamos a las variables creadas el state de la store de zustand */
+    fetchNews: state.fetchNews,
+    isFetchingNews: state.isFetchingNews,
+    fetchNewsError: state.fetchNewsError,
+    news: state.news
+  }))
 
-  /**Función que consume la api */
-  const fetchResult = async () => {
-    const { data } = await axios.get('https://hn.algolia.com/api/v1/search_by_date?query=reactjs&page=1');
-    setResult(data.hits);
-    console.log(data.hits);
-  }
 
   /**Ejecuta la función fetchResult cuando se crea el componente */
   useEffect(() => {
-    fetchResult();
+    fetchNews();
   }, []);
 
   return (
     <div className={`home-container ${props.className}`}>
       <div className='cards-container'>
         
-        {/*Se mapea el array con la información de la api para contruir las cards con la info recibida*/
-          result.map(({ author, story_title, story_url, created_at, created_at_i }) =>
+        {/*Se mapea el array con la información de la api para contruir las cards con la info*/
+          news.map(({ author, story_title, story_url, created_at, created_at_i }) =>
             <Card author={author} storyTitle={story_title} storyUrl={story_url} createdAt={created_at} key={created_at_i.toString()} />)
         }
 
-        {/*         <Pagination />
-        <Dropdown /> */}
-
+        {/*  <Dropdown /> */}
 
       </div>
     </div>
