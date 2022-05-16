@@ -1,9 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ChevronUpIcon } from '@heroicons/react/outline';
+/* Importamos la store de zustand */
+import useNewsStore from '../zustand/news-store';
+/**Se importa shallow utilidad de zustand
+ * https://docs.pmnd.rs/zustand/recipes
+ */
+import shallow from "zustand/shallow";
+
 import pathAngularImage from '../utilities/images/image-138.png';
 import pathReactImage from '../utilities/images/image-140.png';
 import pathValueImage from '../utilities/images/image-141.png';
+import { Link } from 'react-router-dom';
+
+
 /**Componente que recibe la url de la imagen desde las props */
 let ItemIcon = styled.div`
   background: url(${(props => props.background)}) no-repeat;
@@ -12,6 +22,13 @@ let ItemIcon = styled.div`
 `;
 
 function Dropdown(props) {
+  const {
+    setFilter,
+  } = useNewsStore((state) => ({
+    /**Les asignamos a las variables creadas el state de la store de zustand */
+    setFilter: state.setFilter,
+    /**Shallow restringe el re renderizado de los componentes, lo que mejora el performance de la app*/
+  }), shallow);
 
   const handleDropdown = (ev) => {
     let element = ev.target.parentNode;
@@ -29,15 +46,15 @@ function Dropdown(props) {
         <ul>
           <li>
             <ItemIcon background={pathAngularImage} />
-            <a href='#'>Angular</a>
+            <Link to="/" onClick={() => setFilter("angular")}>Angular</Link>
           </li>
           <li>
             <ItemIcon background={pathReactImage} />
-            <a href='#'>React</a>
+            <Link to="/" onClick={() => setFilter("reactjs")}>React</Link>
           </li>
           <li>
             <ItemIcon background={pathValueImage} />
-            <a href='#'>Vue</a>
+            <Link to="/" onClick={() => setFilter("vuejs")}>Vue</Link>
           </li>
         </ul>
 
@@ -48,10 +65,12 @@ function Dropdown(props) {
 
 export default styled(Dropdown)`
   &.container-dropdown {
+    position: absolute;
+    top: 10rem;
     background: white;
     border-radius: 2px;
     width: ${({ theme }) => theme.dims.widths.large};
-    height: ${({ theme }) => theme.dims.heights.medium};
+
     color: ${({ theme }) => theme.colors.mediumHardGray};
     font-size: ${({ theme }) => theme.fonts.size.medium};
     
