@@ -5,6 +5,10 @@ import { ChevronRightIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 /* Importamos la store de zustand */
 import useNewsStore from '../zustand/news-store';
+/**Se importa shallow utilidad de zustand
+ * https://docs.pmnd.rs/zustand/recipes
+ */
+import shallow from "zustand/shallow";
 
 /* Componente estilizado con styled components */
 let Page = styled.a`
@@ -32,7 +36,8 @@ function Pagination(props) {
   } = useNewsStore((state) => ({
     /**Les asignamos a las variables creadas el state de la store de zustand */
     fetchNews: state.fetchNews,
-  }));
+    /**Shallow restringe el re renderizado de los componentes, lo que mejora el performance de la app*/
+  }), shallow);
   
   useEffect(() => {
     fetchNews(currentPage);

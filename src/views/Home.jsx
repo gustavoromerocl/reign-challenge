@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import Spinner from '../components/Spinner';
 /* Importamos la store de zustand */
 import useNewsStore from '../zustand/news-store';
+import shallow from "zustand/shallow";
 
 function Home(props) {
   const {
@@ -17,7 +18,7 @@ function Home(props) {
     isFetchingNews: state.isFetchingNews,
     fetchNewsError: state.fetchNewsError,
     news: state.news
-  }))
+  }), shallow)
 
 
   /**Ejecuta la función fetchResult cuando se crea el componente */
