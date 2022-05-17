@@ -23,13 +23,19 @@ const favesStore = create((set, get) => ({
   fetchFaves: () => {
     /**Intentamos traer los elementos del local storage */
     try {
+      set({ isFetchingFavesNews: true, fetchFavesError: undefined, faves: [] });
+      
       let result = localStorage.getItem("favorites");
       /**Si no existe la storage termina al ejecución */
       if(!result) return; 
-      /**alamcenamos la colección actualizada en la store */
+      /**almacenamos la colección actualizada en la store */
       set({faves: JSON.parse(result)});
+      
     }catch(error){
       set({fetchFavesError: error})
+    }
+    finally {
+      set({isFetchingFavesNews: false});
     }
   },
 }));

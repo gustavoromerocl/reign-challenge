@@ -25,7 +25,7 @@ function Home(props) {
   }), shallow)
 
 
-  /**Ejecuta la función fetchResult cuando se crea el componente */
+  /**Ejecuta la función fetchNews cuando se crea el componente */
   useEffect(() => {
     fetchNews();
     console.log("Me estoy ejecutando en Home");
@@ -34,8 +34,7 @@ function Home(props) {
   return (
     <div>
         <Dropdown />
-        {isFetchingNews && <Spinner />}
-        <NewsList data={news}/>
+        {isFetchingNews ? <Spinner /> : <NewsList data={news}/>}
         {fetchNewsError && <div>Error 404 Not found</div>}
     </div>
   )

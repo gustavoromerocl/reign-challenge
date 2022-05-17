@@ -12,3 +12,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+/*Oculta el asistente de la barra scroll*/
+::-webkit-scrollbar {
+  display: none;
+}
