@@ -7,14 +7,22 @@ const newsStore = create((set, get) => ({
   fetchNewsError: undefined,
   news: [],
   page: 1,
-  filter: 'angular',
+  /**Si existe un valor en local storage se lo asigna, si no por default sera angular*/
+  filter: localStorage.getItem("filter") || 'angular',
   setPage: (page) => set({page: page}),
-  setFilter: (filter) => set({filter: filter}),
+  setFilter: (filter) => {
+    /**Seteamos el filtro en local storage */
+    localStorage.setItem("filter", filter)
+    /**Guardamos el valor actual en una variable */
+    let localFilter = localStorage.getItem("filter");
+    /**Actualzamos el filtro local */
+    set({filter: localFilter});
+  },
   fetchNews: async () => {
     /**Se asignan valores del state con el método get */
     const page = get().page;
     const filter = get().filter;
-
+    
     try {
       /* Formateamos el estado para asegurarnos de que no tenga valores anteriores */
       set({ isFetchingNews: true, fetchNewsError: undefined, news: [] });
