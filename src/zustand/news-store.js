@@ -21,7 +21,11 @@ const newsStore = create((set, get) => ({
 
       const { data } = await axios.get(`https://hn.algolia.com/api/v1/search_by_date?query=${filter}&page=${page}`);
 
-      set({news: data?.hits});
+      /**Filtramos el array de elementos con valores vacíos */
+      const filterData = data.hits.filter(({ author, story_title, story_url, created_at}) => 
+        author !== null || story_title !== null || story_url !== null || created_at !== null);
+
+      set({news: filterData});
     }
     catch (error) {
       set({fetchNewsError: error})
