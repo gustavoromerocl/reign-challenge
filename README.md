@@ -11,11 +11,12 @@ Se solicita crear una spa que consume un api-rest de noticias
 
 ### Solución
 
-Lo solución se realizará con react-js
+La solución se realizará con react-js
 
 ### Entorno de desarrollo (pre-requisitos)
 
-- Node JS v16.13.1  
+- nodejs v16.13.1  
+- react-test-renderer 18.1.0
 
 ### Stack
 
@@ -37,6 +38,7 @@ Lo solución se realizará con react-js
 
 ### Testing 
 
+- npm run test
 
 ### Deploy
 
