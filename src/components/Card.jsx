@@ -9,16 +9,18 @@ import { HeartIcon as HeartIconSolid } from '@heroicons/react/solid'
 import moment from 'moment';
 import useFavesStore from '../zustand/faves-store';
 
-function Card({className, author, storyTitle, storyUrl, createdAt, createdId}) {
+function Card({className, author, storyTitle, storyUrl, createdAt, createdId, heart}) {
   const [hoursAgo, setHoursAgo] = useState('');
   const [hover, setHover] = useState(false);
+  const [like, setLike] = useState(heart);
 
-  /**Zustand store */
+  /**Zustand Faves store */
   const {
     saveFaves,
   } = useFavesStore( (state) => ({
     saveFaves: state.saveFaves,
   }));
+
 
   const favesObject = {
     author: author,
@@ -28,6 +30,10 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId}) {
     created_at_i: createdId,
   }
 
+  function setFaves(favesObject){
+    setLike(!like);
+    saveFaves(favesObject); 
+  }
   function differenceDate() {
     /**Tranforma las fechas a formato date */
     let postDate = moment(new Date(createdAt)); 
@@ -60,7 +66,9 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId}) {
         
       </div>
       <div className={`heart ${hover ? 'hover-card' : undefined}`}>
-        <HeartIcon onClick={() => saveFaves(favesObject)} className={hover ? 'hover-card' : undefined} />
+        {like ? <HeartIconSolid onClick={() => setFaves(favesObject)} className={hover ? 'hover-card' : undefined} /> 
+          : <HeartIcon onClick={() => setFaves(favesObject)} className={hover ? 'hover-card' : undefined} />
+        }
       </div>
     </div>
   )

@@ -21,8 +21,7 @@ function Faves() {
 
   return (
     <div>
-      {isFetchingFavesNews ? <Spinner/> : <NewsList data={faves} />}
-      
+      {isFetchingFavesNews ? <Spinner/> : <NewsList data={faves} heart={true}/>}
     </div>
   )
 }

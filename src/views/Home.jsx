@@ -13,7 +13,7 @@ function Home(props) {
     fetchNewsError,
     news,
     page,
-    filter
+    filter,
   } = useNewsStore((state) => ({
     /**Les asignamos a las variables creadas el state de la store de zustand */
     fetchNews: state.fetchNews,
