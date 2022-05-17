@@ -40,7 +40,7 @@ Lo solución se realizará con react-js
 
 ### Deploy
 
-
+[https://62833e7bcf42d23182b3b80e--voluble-daifuku-a6adaa.netlify.app/]
 
 ### Wiki
 
