@@ -11,6 +11,7 @@ import useFavesStore from '../zustand/faves-store';
 
 function Card({className, author, storyTitle, storyUrl, createdAt, createdId}) {
   const [hoursAgo, setHoursAgo] = useState('');
+  const [hover, setHover] = useState(false);
 
   /**Zustand store */
   const {
@@ -47,16 +48,19 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId}) {
   },[]);
 
   return (
-    <div className={`container-card ${className}`}>
+    <div className={`container-card ${className} ${hover && 'hover-card'}`}>
       <div className='contain-card'>
-        <div className='time'>
+        <div className={`time ${hover ? 'hover-card' : undefined}`}>
           <ClockIcon />
-          <p className='text'>{hoursAgo == 0 ? 'recently' : `${hoursAgo} hours ago`} by {`${author}`} </p>
+          <p className={`text ${hover ? 'hover-card' : undefined}`}>{hoursAgo == 0 ? 'recently' : `${hoursAgo} hours ago`} by {`${author}`} </p>
         </div>
-        <h5>{`${storyTitle}`}</h5>
+        <a href={storyUrl} target="_blank">
+          <h5 onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={hover ? 'hover-card' : undefined}>{`${storyTitle}`}</h5>
+        </a>
+        
       </div>
-      <div className='heart'>
-        <HeartIcon onClick={() => saveFaves(favesObject)}/>
+      <div className={`heart ${hover ? 'hover-card' : undefined}`}>
+        <HeartIcon onClick={() => saveFaves(favesObject)} className={hover ? 'hover-card' : undefined} />
       </div>
     </div>
   )
@@ -119,6 +123,9 @@ export default styled(Card)`
         color: red;
         opacity: 1;
       }
+    }
+    .hover-card{
+      opacity: 0.5;
     }
   }
 `;
