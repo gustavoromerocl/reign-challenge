@@ -19,6 +19,7 @@ let ItemIcon = styled.div`
   background: url(${(props => props.background)}) no-repeat;
   width: 24px;
   height: 24px;
+  margin-left: .75rem;
 `;
 
 function Dropdown(props) {
@@ -66,14 +67,13 @@ function Dropdown(props) {
 export default styled(Dropdown)`
   &.container-dropdown {
     position: absolute;
+    z-index: 10;
     top: 10rem;
     background: white;
     border-radius: 2px;
     width: ${({ theme }) => theme.dims.widths.large};
-
     color: ${({ theme }) => theme.colors.mediumHardGray};
     font-size: ${({ theme }) => theme.fonts.size.medium};
-    
     
     .item {
       padding: 5px;
@@ -82,16 +82,23 @@ export default styled(Dropdown)`
       transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
       cursor: pointer;
       
+
+      
       ul {
-        padding: .75rem .75rem;
+        padding: .75rem 0;
         box-shadow: 0 2px 2px 0 #dad8d8;
+
 
         li {
           display: flex;
           padding: .5rem 0;
+          &:hover {
+            background-color: ${({theme}) => theme.colors.rgbaGray};
+          }
         }
 
         a:link, a:visited, a:active {
+          text-decoration:none;
           color: ${({ theme }) => theme.colors.mediumHardGray};
         }
       }

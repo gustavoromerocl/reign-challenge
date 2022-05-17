@@ -32,6 +32,10 @@ let Label = styled.label`
     color: ${({theme}) => theme.colors.black65};
     width:100%;
   }
+
+  &:hover {
+      background-color: ${({theme}) => theme.colors.rgbaGray};
+    }
 `;
 
 function RadioButton(props) {
@@ -89,8 +93,6 @@ export default styled(RadioButton)`
     display: flex;
     flex-direction: row;
     justify-content: center;
-
-
   }
 
 `;

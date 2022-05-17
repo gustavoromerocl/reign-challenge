@@ -21,7 +21,7 @@ let Page = styled.a`
   text-decoration: none;
   margin-left: ${({theme}) => theme.dims.margin.smallLeft};  
   &:hover {
-    background-color: ${({theme}) => theme.colors.softGray};
+    background-color: ${({theme}) => theme.colors.rgbaGray};
   }
 `;
 
