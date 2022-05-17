@@ -106,11 +106,12 @@ export let GlobalStyles = createGlobalStyle`
 /**Contenedor principal que da estructura al DOM del proyecto */
 export let LayoutContainer = styled.div`
 /**Se divide el viewport usando grid css */
-
-  display: grid;
   min-height: 100vh;
-  grid-template-rows: auto minmax(0,1fr) auto;
 
+  @media ${devices.mediumLaptop}{
+    display: grid;
+    grid-template-rows: auto minmax(0,1fr) auto; 
+  }
   /* Estilos del navbar */
 
   & nav {
@@ -130,8 +131,8 @@ export let LayoutContainer = styled.div`
     bottom: 0;
     background-color: white;
 
-    @media ${devices.maxLaptop}{
-      padding: 48px 0;
+    @media ${devices.mediumLaptop}{
+      padding: 20px 0;
     }
   }
 
