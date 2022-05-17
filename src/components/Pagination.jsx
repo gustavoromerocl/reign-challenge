@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ChevronLeftIcon } from '@heroicons/react/outline';
 import { ChevronRightIcon } from '@heroicons/react/outline';
@@ -26,26 +26,37 @@ let Page = styled.a`
 `;
 
 /**Array de números para simular las paginas desde la api */
-const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Pagination(props) {
   const {
     setPage,
+    page,
   } = useNewsStore((state) => ({
     /**Les asignamos a las variables creadas el state de la store de zustand */
-    setPage: state.setPage
+    setPage: state.setPage,
+    page: state.page,
     /**Shallow restringe el re renderizado de los componentes, lo que mejora el performance de la app*/
   }), shallow);
   
   /**PENDIENTE IMPLEMENTAR CONTROLADOR PARA LAS PAGINAS  */
-  const Pages = numbers.map((el, index) => <Page href='#' onClick={() => setPage(el)} key={index}>{el + 1}</Page>)
+  const Pages = numbers.map((el, index) => 
+  <Page href='#' 
+    onClick={() => setPage(el)} 
+    key={index}
+    /**Si la pagina de la store es igual al el numero de componente se le asigna la clase selected */
+    className={page === el ? 'selected' : undefined} 
+  >{el}
+  </Page>)
   return (
     <div className={`container-pagination ${props.className}`} >
-      <Page>
-        <ChevronLeftIcon className='left-arrow-icon' />
+      {/* Si la página es igual a 1 salta a la ultima página sino avanza una hacia la izquierda, 
+      la flecha contraria funciona igual pero de forma invertida  */}
+      <Page onClick={() => setPage(page == 1 ? 9 : page - 1)}>
+        <ChevronLeftIcon className='left-arrow-icon'/>
       </Page>
       {Pages}
-      <Page >
+      <Page onClick={() => setPage(page == 9 ? 1 : page + 1)}>
         <ChevronRightIcon className='right-arrow-icon' />
       </Page>
     </div>
@@ -68,14 +79,10 @@ export default styled(Pagination)`
       height: 1.3rem;
     }
 
-    /**Estilos de la pagina seleccionada */
-    a:nth-child(3){
+    /**Estilos para la página seleccionada */
+    .selected {
       background-color: ${({theme}) => theme.colors.skyBlue};
-      color: ${({theme}) => theme.colors.white};
-    }
-
-    a:nth-child(1){
-      margin-left: 0;
+      color: ${({theme}) => theme.colors.white}!important;
     }
   }
 
