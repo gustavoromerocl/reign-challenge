@@ -1,8 +1,10 @@
 /**https://styled-components.com/ 
  * https://styled-components.com/docs/faqs#note-regarding-css-import-and-createglobalstyle
  * https://developer.mozilla.org/es/docs/Web/CSS/grid-template-rows
+ * https://styled-components.com/docs/faqs#can-i-nest-rules
 */
 import styled, { createGlobalStyle } from 'styled-components';
+import devices from './breakoints';
 
 /**Configuración de variables de estilo*/
 export default {
@@ -66,6 +68,7 @@ export default {
     },
     margin: {
       smallLeft: '8px',
+      responsiveSmall: '0 1rem',
       small: '0 150px',
       horizontalCenter: '0 auto',
     },
@@ -123,9 +126,13 @@ export let LayoutContainer = styled.div`
   & footer{
     position: fixed;
     width: 100%;
-    padding: 98px 0;
+    padding: 30px 0;
     bottom: 0;
     background-color: white;
+
+    @media ${devices.maxLaptop}{
+      padding: 48px 0;
+    }
   }
 
   /**Estilos del container */
@@ -133,9 +140,12 @@ export let LayoutContainer = styled.div`
 
 /**Contenedor que restringe el tamaño máximo y le entrega un margen horizontal */
 export let Container = styled.div`
-  max-width: 100vw;
+  max-width: 100%;
   height: 100%;
-  margin: ${ ({theme}) => theme.dims.margin.small };
+  @media ${devices.mediumLaptop}{
+    max-width: 100vw;
+    margin: ${ ({theme}) => theme.dims.margin.small };
+  }
 `;
 
 /**Flex containers */

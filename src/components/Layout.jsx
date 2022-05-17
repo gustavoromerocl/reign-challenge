@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import RadioButton from './RadioButton';
 import Pagination from './Pagination';
+import devices from '../theme/breakoints';
 
 /**Se sobreescribe el componente Container para alinear el logo en el encabezado, a su vez se asigna un alias para evitar conflictos de nombre */
 let ContainerNav = styled(ContainerOverride)`
@@ -14,10 +15,15 @@ let ContainerNav = styled(ContainerOverride)`
 
 /**Contenido principal*/
 let BodyContainer = styled.div`
-  max-width: 100vw;
-  max-height: 70vh;
+  max-width: 90%;
+  margin: 0 auto;
+  max-height: 100vh;
   overflow-y: scroll;
-  margin: ${ ({theme}) => theme.dims.margin.small };
+  @media ${devices.mediumLaptop}{
+    max-height: 70vh;
+    max-width: 100vw;
+    margin: ${ ({theme}) => theme.dims.margin.small };
+  }
 `
 
 let HeadContainer = styled.div`

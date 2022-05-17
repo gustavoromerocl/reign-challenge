@@ -12,6 +12,7 @@ import pathAngularImage from '../utilities/images/image-138.png';
 import pathReactImage from '../utilities/images/image-140.png';
 import pathValueImage from '../utilities/images/image-141.png';
 import { Link } from 'react-router-dom';
+import devices from '../theme/breakoints'
 
 
 /**Componente que recibe la url de la imagen desde las props */
@@ -66,22 +67,26 @@ function Dropdown(props) {
 
 export default styled(Dropdown)`
   &.container-dropdown {
-    position: absolute;
-    z-index: 10;
-    top: 10rem;
     background: white;
     border-radius: 2px;
-    width: ${({ theme }) => theme.dims.widths.large};
     color: ${({ theme }) => theme.colors.mediumHardGray};
     font-size: ${({ theme }) => theme.fonts.size.medium};
     
+    @media ${devices.mediumLaptop}{
+      top: 10rem;
+      position: absolute;
+      z-index: 10;
+      top: 12rem;
+      margin-left: .25rem;
+    }
     .item {
       padding: 5px;
+      margin-bottom: 1rem;
       max-height: 2.5em;
       overflow: hidden;
       transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
       cursor: pointer;
-      
+      @media ${devices.mediumLaptop}{margin-bottom: 0;}
 
       
       ul {
@@ -114,6 +119,8 @@ export default styled(Dropdown)`
 
     .head {
       position: relative;
+      margin: 0 auto;
+      width: ${({ theme }) => theme.dims.widths.large};
       min-height: 2em;
       line-height: 2em;
       align-items: center;
