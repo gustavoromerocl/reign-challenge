@@ -92,7 +92,6 @@ export default styled(Dropdown)`
         }
 
         a:link, a:visited, a:active {
-          text-decoration:none;
           color: ${({ theme }) => theme.colors.mediumHardGray};
         }
       }

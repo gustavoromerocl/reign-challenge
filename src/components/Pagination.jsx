@@ -60,7 +60,6 @@ export default styled(Pagination)`
     font-size: ${({theme}) => theme.fonts.size.medium};
 
     a:link, a:visited, a:active {
-      text-decoration:none;
       color: ${({theme}) => theme.colors.black65};
     }
 

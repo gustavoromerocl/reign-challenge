@@ -28,7 +28,6 @@ let Label = styled.label`
   }
   /**Estilos para input no seleccionado */
   a:link, a:visited, a:active {
-    text-decoration:none;
     color: ${({theme}) => theme.colors.black65};
     width:100%;
   }

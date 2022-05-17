@@ -124,8 +124,12 @@ export default styled(Card)`
         opacity: 1;
       }
     }
+
     .hover-card{
-      opacity: 0.5;
+      opacity: 0.6;
     }
+  }
+  &.container-card.hover-card{
+    border-color: ${({theme}) => theme.colors.rgbaGray};
   }
 `;
