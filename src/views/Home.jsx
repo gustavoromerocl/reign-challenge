@@ -28,6 +28,7 @@ function Home(props) {
   /**Ejecuta la función fetchNews cuando se crea el componente */
   useEffect(() => {
     fetchNews();
+    console.log(news);
   }, [page, filter]);
 
   return (

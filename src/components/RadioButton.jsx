@@ -1,4 +1,5 @@
 /**https://styled-components.com/docs/basics#passed-props */
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -62,10 +63,9 @@ function RadioButton(props) {
           type="radio"
           name="hackernews"
           value="allnews"
-          defaultChecked
         />
-        <Label htmlFor="allnews" id="allnews" onClick={ToggleChecked}>
-          <Link to="/" onClick={ToggleChecked}>All</Link> 
+        <Label className="checked" htmlFor="allnews" id="allnews" onClick={ToggleChecked}>
+          <Link to="/" >All</Link> 
         </Label>
       </div>
       <div>
