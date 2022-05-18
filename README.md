@@ -37,7 +37,7 @@ Consumir los siguientes endpoints:
 ##### Estrucutra de carpetas
 <img src="/public/docs/estructura-de-carpetas.png" alt="estructura"/>
 
-El orden del proyecto esta pensado para una fácil lectura y rápida ubicación de los contenidos. Para el desarrollo de los estilos de la solución usé styled components, por este motivo es que no hay archivo css con el nombre de los componentes aexcepción de configuración principal index.js donde puse las fuentes por default y la configuración de la visualización del scroll. El uso de esta librería nos permite escribir css en su sintaxis nativa o de una sintaxis muy similar a la de sass, existen diversas formas de integrarlo a un componente, pero la que más me gustó fue la que los incluye al momento de exportarlo. A conttinuación observamos un ejemplo de esto y además el uso de variables globales desde un tema configurado con styled components.
+El orden del proyecto esta pensado para una fácil lectura y rápida ubicación de los contenidos. Para el desarrollo de los estilos de la solución usé styled components, por este motivo es que no hay archivo css con el nombre de los componentes a excepción de la configuración principal (index.js/index.css) donde puse las fuentes por default y la configuración de la visualización del scroll. El uso de esta librería nos permite escribir css en su sintaxis nativa o de una sintaxis muy similar a la de sass, existen diversas formas de integrarlo a un componente, pero la que más me gustó fue la que los incluye al momento de exportarlo. A conttinuación observamos un ejemplo de esto y además el uso de variables globales desde un tema configurado con styled components.
 
 ##### Tema global
 <img src="/public/docs/global-theme.png" alt="tema global"/>
@@ -61,11 +61,11 @@ Por otro lado, la configuración de los providers utilizados en el main de la ap
 ##### Providers
 <img src="/public/docs/providers.png" alt="provider"/>
 
-Otro de los componentes importantes es Layout, el cual establece que partes de la app serán estáticas y las que no se reciben en el children, de esta manera además de el header puse el rabiobutton como estaticos, ya que se repite en ambas vistas del desafío. Mi intencón era implementar react-virtualized para el infinite loader en lo contenido en los childrens, pero al intalar el paquete me generó conficto con la versión de react. 
+Otro de los componentes importantes es Layout, el cual establece que partes de la app serán estáticas y las que no se reciben en el children, de esta manera además de el header puse el rabiobutton como estáticos, ya que se repite en ambas vistas del desafío. Mi intención era implementar react-virtualized para el infinite loader en lo contenido en los childrens, pero al instalar el paquete me generó conficto con la versión de react. 
 
 ##### Layout
 <img src="/public/docs/layout.png" alt="provider"/>
-Finalmente, lo visto anteriormente son las piedras angulares del funcionamiento de la app y que en conjunto hacen un gran trabajo. La forma en que organice el desarrollo fue comenzando a crear los componentes y sus estilos de acuerdo a la maqueta. Entonces, una vez construidos les podría dar funcionalidad y posicionar en el DOM.
+Finalmente, lo visto anteriormente son las piedras angulares del funcionamiento de la app y que en conjunto hacen un gran trabajo. La forma en que organicé el desarrollo fue comenzando a crear los componentes y sus estilos de acuerdo a la maqueta. Entonces, una vez construidos les podría dar funcionalidad y posicionar en el DOM.
 
 ##### Creación de componentes
 <img src="/public/docs/componentes1.png" alt="comp 1"/>
@@ -134,7 +134,7 @@ Commits de trabajo:
 
 - npm run test
 
-Durante le prograamción de la pruebas unitarias tuve conflicto la version actual de react, styled components y la versión de jest de la que aprendí, por lo que no pude realizar el unit testing que tenia planeado a la llamada a la api y localstorage. De todas formas comparto el despliegue en consola:
+Durante le programación de la pruebas unitarias tuve conflicto la versión actual de react, styled components y la versión de jest de la que aprendí, por lo que no pude realizar el unit testing que tenia planeado a la llamada a la api y localstorage. De todas formas comparto el despliegue en consola:
 
 <img src="/public/docs/coverage-testing.png" alt="jest"/>
 
@@ -156,4 +156,4 @@ Durante le prograamción de la pruebas unitarias tuve conflicto la version actua
 
 ### Conclusiones
 
-En conclusión, fue un desafío complejo con varias aristas pero que sin duda me deja con la sensación de que el tiempo invertido en aprender frontend no fue en vano, siempre habrá algo nuevo que aprender. Quedan varias cosas por hacer en el proyecto par mejorar la experiencia de usuario, sin embargo lo considero el mínimo funcional que debiese tener un proyecto y el resto es solo cuestión de pulir. Gracias por la oportunidad, quedo atento a sus sugerencias y feedback para seguir mejorando mi habilidad.
+En conclusión, fue un desafío complejo con varias aristas pero que sin duda me deja con la sensación de que el tiempo invertido en aprender frontend no fue en vano, siempre habrá algo nuevo que aprender. Quedan varias cosas por hacer en el proyecto para mejorar la experiencia de usuario, sin embargo, lo considero el mínimo funcional que debiese tener un proyecto y el resto es solo cuestión de pulir. Gracias por la oportunidad, quedo atento a sus sugerencias y feedback para seguir mejorando mi habilidad.
