@@ -7,7 +7,7 @@ import Pagination from './Pagination';
 import devices from '../theme/breakoints';
 
 /**Se sobreescribe el componente Container para alinear el logo en el encabezado, a su vez se asigna un alias para evitar conflictos de nombre */
-let ContainerNav = styled(ContainerOverride)`
+let HeaderContainer = styled(ContainerOverride)`
   display: flex;
   justify-content: start;
   align-items: center;
@@ -34,9 +34,9 @@ export default function Layout(props) {
   return (
     <LayoutContainer className={props.className}>
       <nav>
-        <ContainerNav>
+        <HeaderContainer>
           <Header />
-        </ContainerNav>
+        </HeaderContainer>
       </nav>
       <main>
         <HeadContainer>

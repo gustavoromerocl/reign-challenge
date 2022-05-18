@@ -61,6 +61,10 @@ Por otro lado, la configuración de los providers utilizados en el main de la ap
 ##### Providers
 <img src="/public/docs/providers.png" alt="provider"/>
 
+Otro de los componentes importantes es Layout, el cual establece que partes de la app serán estáticas y las que no se reciben en el children, de esta manera además de el header puse el rabiobutton como estaticos, ya que se repite en ambas vistas del desafío. Mi intencón era implementar react-virtualized para el infinite loader en lo contenido en los childrens, pero al intalar el paquete me generó conficto con la versión de react. 
+
+##### Layout
+<img src="/public/docs/layout.png" alt="provider"/>
 Finalmente, lo visto anteriormente son las piedras angulares del funcionamiento de la app y que en conjunto hacen un gran trabajo. La forma en que organice el desarrollo fue comenzando a crear los componentes y sus estilos de acuerdo a la maqueta. Entonces, una vez construidos les podría dar funcionalidad y posicionar en el DOM.
 
 ##### Creación de componentes
