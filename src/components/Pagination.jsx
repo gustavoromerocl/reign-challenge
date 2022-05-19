@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ChevronLeftIcon } from '@heroicons/react/outline';
 import { ChevronRightIcon } from '@heroicons/react/outline';
@@ -52,11 +52,11 @@ function Pagination(props) {
     <div className={`container-pagination ${props.className}`} >
       {/* Si la página es igual a 1 salta a la ultima página sino avanza una hacia la izquierda, 
       la flecha contraria funciona igual pero de forma invertida  */}
-      <Page onClick={() => setPage(page == 1 ? 9 : page - 1)}>
+      <Page onClick={() => setPage(page === 1 ? 9 : page - 1)}>
         <ChevronLeftIcon className='left-arrow-icon'/>
       </Page>
       {Pages}
-      <Page onClick={() => setPage(page == 9 ? 1 : page + 1)}>
+      <Page onClick={() => setPage(page === 9 ? 1 : page + 1)}>
         <ChevronRightIcon className='right-arrow-icon' />
       </Page>
     </div>
