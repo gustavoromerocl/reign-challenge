@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Card from './Card';
 
 function NewsList({data, className, heart}) {
-  console.log(heart)
   return (
     <div className={`cards-container ${className}`}>
       {/*Se mapea el array con la información de la api para contruir las cards con la info*/

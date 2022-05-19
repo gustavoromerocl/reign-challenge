@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ChevronUpIcon } from '@heroicons/react/outline';
 /* Importamos la store de zustand */
@@ -24,6 +24,10 @@ let ItemIcon = styled.div`
 `;
 
 function Dropdown(props) {
+  const [active, setActive] = useState(false);
+  let container = document.querySelector('.App');
+  let item = document.getElementsByClassName('item');
+
   const {
     setFilter,
   } = useNewsStore((state) => ({
@@ -32,15 +36,31 @@ function Dropdown(props) {
     /**Shallow restringe el re renderizado de los componentes, lo que mejora el performance de la app*/
   }), shallow);
 
-  const handleDropdown = (ev) => {
-    let element = ev.target.parentNode;
+  const handleDropdown = () => {
+    setActive(!active);
+    console.log(container);
+    if(active == true) container.addEventListener("click", console.log("evento agregado"));
+    if(active == false) container.removeEventListener("click", console.log("evento borrado"));
+    
     /* let parent = element.parentNode; */
-    element.classList.toggle('active');
+/*     let flag = element.classList.toggle('active');
+    console.log(flag);
+    if(flag) {
+      container.addEventListener('click', () => {
+        if(!flag) {
+          container.removeEventListener('click', console.log('eliminando evento'));
+          return;
+        };
+        element.classList.toggle('active');
+      });
+    }; */
+
+    
   }
 
   return (
     <div className={`container-dropdown ${props.className}`}>
-      <div className="item">
+      <div className={`item ${active ? 'active' : undefined}`}>
         <div className='head' onClick={handleDropdown}>
           <p>Select your news</p>
           <ChevronUpIcon />
