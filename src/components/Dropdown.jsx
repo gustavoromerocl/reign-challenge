@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { ChevronUpIcon } from '@heroicons/react/outline';
 /* Importamos la store de zustand */
@@ -25,8 +25,7 @@ let ItemIcon = styled.div`
 
 function Dropdown(props) {
   const [active, setActive] = useState(false);
-  let container = document.querySelector('.App');
-  let item = document.getElementsByClassName('item');
+  const btnRef = useRef();
 
   const {
     setFilter,
@@ -36,32 +35,30 @@ function Dropdown(props) {
     /**Shallow restringe el re renderizado de los componentes, lo que mejora el performance de la app*/
   }), shallow);
 
-  const handleDropdown = () => {
-    setActive(!active);
-    console.log(container);
-    if(active == true) container.addEventListener("click", console.log("evento agregado"));
-    if(active == false) container.removeEventListener("click", console.log("evento borrado"));
-    
-    /* let parent = element.parentNode; */
-/*     let flag = element.classList.toggle('active');
-    console.log(flag);
-    if(flag) {
-      container.addEventListener('click', () => {
-        if(!flag) {
-          container.removeEventListener('click', console.log('eliminando evento'));
-          return;
-        };
-        element.classList.toggle('active');
-      });
-    }; */
 
-    
-  }
+
+  useEffect(() => {
+    const closeDropdown = (ev) => {
+      /* console.log(btnRef.current);
+      console.log(ev.path[1]); */
+
+      /* Validamos que el elemento que disparo el evento no sea igual a la referencia creada con useRef y
+      también validamos que el estado local del dropdown sea activo */
+      if ( ev.path[1] !== btnRef.current && active === true) setActive(active => !active);
+      
+    }
+
+    /**Agregamos el evento click al body y le pasamos la función ejecutora*/
+    document.body.addEventListener('click', closeDropdown);
+
+    /**Eliminamos el evento cuando el componente dropdown sea eliminado */
+    return () => document.body.removeEventListener('click', closeDropdown);
+  })
 
   return (
     <div className={`container-dropdown ${props.className}`}>
-      <div className={`item ${active ? 'active' : undefined}`}>
-        <div className='head' onClick={handleDropdown}>
+      <div ref={btnRef} className={`item ${active ? 'active' : 'unactive'}`}>
+        <div className='head' onClick={() => {setActive(active => !active); console.log("me estoy ejecutando" + active)}}>
           <p>Select your news</p>
           <ChevronUpIcon />
         </div>
