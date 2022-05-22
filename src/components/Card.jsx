@@ -22,18 +22,22 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId, he
   }));
 
 
-  const favesObject = {
-    author: author,
-    story_title: storyTitle,
-    story_url: storyUrl,
-    created_at: createdAt, 
-    created_at_i: createdId,
+
+
+  function setFaves (){
+    
+    const favesObject = {
+      author: author,
+      story_title: storyTitle,
+      story_url: storyUrl,
+      created_at: createdAt, 
+      created_at_i: createdId,
+    }
+
+    saveFaves(favesObject); 
+    setLike(!like);
   }
 
-  function setFaves(favesObject){
-    setLike(!like);
-    saveFaves(favesObject); 
-  }
   function differenceDate() {
     /**Tranforma las fechas a formato date */
     let postDate = moment(new Date(createdAt)); 
@@ -68,8 +72,8 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId, he
         
       </div>
       <div className={`heart ${hover ? 'hover-card' : undefined}`}>
-        {like ? <HeartIconSolid onClick={() => setFaves(favesObject)} className={hover ? 'hover-card' : undefined} /> 
-          : <HeartIcon onClick={() => setFaves(favesObject)} className={hover ? 'hover-card' : undefined} />
+        {like ? <HeartIconSolid onClick={() => setFaves()} className={hover ? 'hover-card' : undefined} /> 
+          : <HeartIcon onClick={() => setFaves()} className={hover ? 'hover-card' : undefined} />
         }
       </div>
     </div>
