@@ -27,7 +27,7 @@ const favesStore = create((set, get) => ({
       
       let result = localStorage.getItem("favorites");
       /**Si no existe la storage termina al ejecución */
-      if(!result) return; 
+      if(!result) return;
       /**almacenamos la colección actualizada en la store */
       set({faves: JSON.parse(result)});
       

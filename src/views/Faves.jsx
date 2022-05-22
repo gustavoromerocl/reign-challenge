@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import NewsList from '../components/NewsList';
 import Spinner from '../components/Spinner';
+import { CenterContainer, Paragraph } from '../theme';
 import useFavesStore from '../zustand/faves-store';
 
-function Faves() {
+function Faves(props) {
   /**Se instancia la store de zustand */
   const {
     faves,
@@ -15,15 +17,25 @@ function Faves() {
     isFetchingFavesNews: state.isFetchingFavesNews,
   }));
 
+
+
   useEffect(() => {
-    fetchFaves();
-  }, []);
+    /* se hace wrapped asyncrono a la store para traer los reaultados en el primer render */
+    const fetchOwnFaves = async () => {
+      //Espera a que fetchFaves termine de ejecutarse para continuar
+      await fetchFaves();
+    }
+    fetchOwnFaves();
+  },[]);
 
   return (
-    <div>
-      {isFetchingFavesNews ? <Spinner/> : <NewsList data={faves} heart={true}/>}
+    <div className={props.className}>
+      {isFetchingFavesNews && <Spinner/>}
+      { faves.length !== 0 ? <NewsList data={faves} heart={true}/> : <CenterContainer><Paragraph>you have no saved favorites  </Paragraph></CenterContainer>}
     </div>
   )
 }
 
-export default Faves;
+export default styled(Faves)`
+  height: 50vh;
+`;

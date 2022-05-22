@@ -157,9 +157,17 @@ export let Container = styled.div`
   }
 `;
 
+export let Paragraph = styled.p`
+  font-family: 'Roboto Regular';
+  font-size: ${({theme}) => theme.fonts.size.medium};
+  color: ${({theme}) => theme.colors.lightGray};
+`;
+
 /**Flex containers */
 
 export let CenterContainer = styled.div`
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
