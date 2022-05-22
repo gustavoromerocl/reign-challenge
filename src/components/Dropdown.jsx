@@ -88,7 +88,7 @@ export default styled(Dropdown)`
     border-radius: 2px;
     color: ${({ theme }) => theme.colors.mediumHardGray};
     font-size: ${({ theme }) => theme.fonts.size.medium};
-    
+
     
     @media ${devices.mediumLaptop}{
       top: 10rem;
@@ -107,13 +107,12 @@ export default styled(Dropdown)`
       cursor: pointer;
       width: ${({ theme }) => theme.dims.widths.large};
       margin: 0 auto;
-      @media ${devices.mediumLaptop}{margin-bottom: 0;}
 
+      @media ${devices.mediumLaptop}{margin-bottom: 0;}
       
       ul {
         padding: .75rem 0;
         box-shadow: 0 2px 2px 0 #dad8d8;
-
 
         li {
           display: flex;
@@ -149,6 +148,10 @@ export default styled(Dropdown)`
       display: flex;
       justify-content: space-between;
       padding: 0 12px;
+      &:hover {
+        background-color: ${({theme}) => theme.colors.rgbaGray};
+        border-radius: ${({ theme }) => theme.dims.borderRadius.medium};
+      }
 
       svg {
         width: .8rem;
@@ -170,4 +173,5 @@ export default styled(Dropdown)`
       
     }
   }
+
 `;
