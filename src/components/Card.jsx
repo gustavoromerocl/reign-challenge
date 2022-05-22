@@ -60,9 +60,11 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId, he
           <ClockIcon />
           <p className={`text ${hover ? 'hover-card' : undefined}`}>{hoursAgo === 0 ? 'recently' : `${hoursAgo} hours ago`} by {`${author}`} </p>
         </div>
-        <a href={storyUrl} target="_blank">
-          <h5 onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={hover ? 'hover-card' : undefined}>{`${storyTitle}`}</h5>
-        </a>
+        
+          <h5 className={hover ? 'hover-card' : undefined}>
+          <a onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} href={storyUrl} target="_blank">{`${storyTitle}`}</a>
+          </h5>
+        
         
       </div>
       <div className={`heart ${hover ? 'hover-card' : undefined}`}>
@@ -111,10 +113,11 @@ export default styled(Card)`
         }
       }
 
-      h5 {
+      a {
         font-family: ${({theme}) => theme.fonts.family.roboto.medium};
         font-size: ${({ theme }) => theme.fonts.size.gray};
         color: ${({ theme }) => theme.colors.gray};
+        display: inline;
       }
     }
 

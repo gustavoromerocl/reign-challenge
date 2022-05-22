@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutContainer, Container, Container as ContainerOverride } from '../theme';
+import { LayoutContainer, Container as ContainerOverride } from '../theme';
 import styled from 'styled-components';
 import Header from './Header';
 import RadioButton from './RadioButton';
