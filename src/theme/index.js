@@ -115,11 +115,19 @@ export let LayoutContainer = styled.div`
   /* Estilos del navbar */
 
   & nav {
+    position: sticky;
+    z-index: 10;
+    top: 0;
     height: 114px;
     box-shadow: ${({theme}) => theme.shadows.leftBottom};
     background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
     color: ${({theme}) => theme.colors.mediumGray};
     font-family: ${({theme}) => theme.fonts.family.brandTitle};
+    
+    @media ${devices.mediumLaptop}{
+      position: relative;
+      top: auto;
+    }
   }
 
   /* Estilos del footer */

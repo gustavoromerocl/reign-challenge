@@ -58,7 +58,7 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId, he
       <div className='contain-card'>
         <div className={`time ${hover ? 'hover-card' : undefined}`}>
           <ClockIcon />
-          <p className={`text ${hover ? 'hover-card' : undefined}`}>{hoursAgo == 0 ? 'recently' : `${hoursAgo} hours ago`} by {`${author}`} </p>
+          <p className={`text ${hover ? 'hover-card' : undefined}`}>{hoursAgo === 0 ? 'recently' : `${hoursAgo} hours ago`} by {`${author}`} </p>
         </div>
         <a href={storyUrl} target="_blank">
           <h5 onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={hover ? 'hover-card' : undefined}>{`${storyTitle}`}</h5>

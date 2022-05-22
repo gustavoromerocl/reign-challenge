@@ -9,6 +9,9 @@ import useNewsStore from '../zustand/news-store';
  */
 import shallow from "zustand/shallow";
 
+import { useMediaPredicate } from "react-media-hook";
+import devices from '../theme/breakoints';
+
 /* Componente estilizado con styled components */
 let Page = styled.a`
   width: 32px;
@@ -30,6 +33,8 @@ let Page = styled.a`
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Pagination(props) {
+  const biggerThanMd = useMediaPredicate(`${devices.mediumLaptop}`);
+
   const {
     setPage,
     page,
@@ -56,7 +61,7 @@ function Pagination(props) {
       <Page onClick={() => setPage(page === 1 ? 9 : page - 1)}>
         <ChevronLeftIcon className='left-arrow-icon'/>
       </Page>
-      {Pages}
+      {biggerThanMd ? Pages : <Page>{page}</Page>}
       <Page onClick={() => setPage(page === 9 ? 1 : page + 1)}>
         <ChevronRightIcon className='right-arrow-icon' />
       </Page>

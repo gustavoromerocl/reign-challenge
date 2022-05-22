@@ -28,6 +28,9 @@ let BodyContainer = styled.div`
 
 let HeadContainer = styled.div`
   padding: ${({theme}) => theme.dims.padding.big} 0;
+  position: sticky;
+  top: 114px;
+  background-color: ${({theme}) => theme.colors.white };
 `;
 
 export default function Layout(props) {
