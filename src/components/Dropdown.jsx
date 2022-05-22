@@ -113,10 +113,11 @@ export default styled(Dropdown)`
       ul {
         padding: .75rem 0;
         box-shadow: 0 2px 2px 0 #dad8d8;
-
+        width: 100%;
         li {
           display: flex;
           padding: .5rem 0;
+          width: 100%;
           &:hover {
             background-color: ${({theme}) => theme.colors.rgbaGray};
           }
@@ -125,6 +126,7 @@ export default styled(Dropdown)`
         a:link, a:visited, a:active {
           text-decoration:none;
           color: ${({ theme }) => theme.colors.mediumHardGray};
+          width: 100%;
         }
       }
     }
@@ -148,6 +150,7 @@ export default styled(Dropdown)`
       display: flex;
       justify-content: space-between;
       padding: 0 12px;
+
       &:hover {
         background-color: ${({theme}) => theme.colors.rgbaGray};
         border-radius: ${({ theme }) => theme.dims.borderRadius.medium};

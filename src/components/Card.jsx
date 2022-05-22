@@ -130,6 +130,7 @@ export default styled(Card)`
         height: 22px;
         color: red;
         opacity: 1;
+        cursor: pointer;
       }
     }
 

@@ -22,6 +22,7 @@ let Page = styled.a`
   margin-left: ${({theme}) => theme.dims.margin.smallLeft};  
   &:hover {
     background-color: ${({theme}) => theme.colors.rgbaGray};
+    cursor: pointer;
   }
 `;
 
