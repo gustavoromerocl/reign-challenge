@@ -56,9 +56,9 @@ function Dropdown(props) {
   })
 
   return (
-    <div className={`container-dropdown ${props.className}`}>
-      <div ref={btnRef} className={`item ${active ? 'active' : 'unactive'}`}>
-        <div className='head' onClick={() => {setActive(active => !active); console.log("me estoy ejecutando" + active)}}>
+    <div className={`container-dropdown ${ props.className }`}>
+      <div ref={btnRef} className={`item ${ active ? 'active' : 'unactive' }`}>
+        <div className='head' onClick={() => {setActive(active => !active)}}>
           <p>Select your news</p>
           <ChevronUpIcon />
         </div>
@@ -89,6 +89,7 @@ export default styled(Dropdown)`
     color: ${({ theme }) => theme.colors.mediumHardGray};
     font-size: ${({ theme }) => theme.fonts.size.medium};
     
+    
     @media ${devices.mediumLaptop}{
       top: 10rem;
       position: absolute;
@@ -96,6 +97,7 @@ export default styled(Dropdown)`
       top: 12rem;
       margin-left: .25rem;
     }
+
     .item {
       padding: 5px;
       margin-bottom: 1rem;
@@ -103,6 +105,8 @@ export default styled(Dropdown)`
       overflow: hidden;
       transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
       cursor: pointer;
+      width: ${({ theme }) => theme.dims.widths.large};
+      margin: 0 auto;
       @media ${devices.mediumLaptop}{margin-bottom: 0;}
 
       
@@ -136,8 +140,7 @@ export default styled(Dropdown)`
 
     .head {
       position: relative;
-      margin: 0 auto;
-      width: ${({ theme }) => theme.dims.widths.large};
+      width: 100%;
       min-height: 2em;
       line-height: 2em;
       align-items: center;

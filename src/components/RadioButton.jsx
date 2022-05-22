@@ -27,18 +27,25 @@ let Label = styled.label`
     color: ${({ theme }) => theme.colors.azure};
     border: ${({ theme }) => theme.borders.sky};
   }
+
+  &.hover {
+    background-color: ${({theme}) => theme.colors.rgbaGray};
+  }
+
   /**Estilos para input no seleccionado */
   a:link, a:visited, a:active {
     color: ${({theme}) => theme.colors.black65};
     width:100%;
   }
 
-  &:hover {
-      background-color: ${({theme}) => theme.colors.rgbaGray};
-    }
 `;
 
 function RadioButton(props) {
+/*   const [active, setActive] = useState(false); */
+
+  const handleHover = (ev) => {
+    ev.target.parentNode.classList.toggle('hover');  
+  }
   
   /**Funcion que intercambia al clase con el efecto de selección */
   const ToggleChecked = (ev) => {
@@ -69,18 +76,24 @@ function RadioButton(props) {
           value="allnews"
         />
         <Label className="checked" htmlFor="allnews" id="allnews" onClick={ToggleChecked}>
-          <Link to="/" >All</Link> 
+          <Link to="/"           
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
+          >All</Link> 
         </Label>
       </div>
       <div>
         <Input
-          
           type="radio"
           name="hackernews"
           value="myfavoritenews" 
           />
         <Label htmlFor="myfavoritenews" id="myfavoritenews">
-          <Link to="/faves" onClick={ToggleChecked}>My faves</Link>
+          <Link to="/faves" 
+            onClick={ToggleChecked}
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
+          >My faves</Link>
         </Label>
       </div>
     </div>
