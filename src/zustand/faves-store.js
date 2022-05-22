@@ -8,9 +8,18 @@ const favesStore = create((set, get) => ({
   saveFaves: (element) => {
     /**instanciamos el array actual de elementos */
     const currentFaves =  get().faves;
+    
+    /* Validamos que el elemento no exista ya en la lista de favoritos */
+    let newElement = currentFaves.find(el => el.created_at_i === element.created_at_i);
 
+    /* Si existe terminamos la ejeución */
+    if(newElement) return;
+
+    /* Si no existe tomamos el valor de element y lo pasamos al nuevo array */
+    newElement = element;
+    
     /**Agregamos al array el elemento recibido en los params */
-    const myFavesObjects = [...currentFaves, element];
+    const myFavesObjects = [...currentFaves, newElement];
 
     /**Intentamos actualizar el local storage */
     try {
@@ -20,6 +29,11 @@ const favesStore = create((set, get) => ({
     catch (error){
       set({fetchFavesError: error})
     }
+  },
+  removeFaves: (id) => {
+    const currentFaves =  get().faves;
+    let element = currentFaves.find(el => el.created_at_i === id);
+
   },
   fetchFaves: () => {
     /**Intentamos traer los elementos del local storage */
