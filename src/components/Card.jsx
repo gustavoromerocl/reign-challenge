@@ -9,7 +9,7 @@ import { HeartIcon as HeartIconSolid } from '@heroicons/react/solid'
 import moment from 'moment';
 import useFavesStore from '../zustand/faves-store';
 
-function Card({className, author, storyTitle, storyUrl, createdAt, createdId, heart}) {
+function Card({className, author, storyTitle, storyUrl, createdAt, createdId, heart = false}) {
   const [hoursAgo, setHoursAgo] = useState('');
   const [hover, setHover] = useState(false);
   const [like, setLike] = useState(heart);
@@ -17,8 +17,10 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId, he
   /**Zustand Faves store */
   const {
     saveFaves,
+    removeFaves
   } = useFavesStore( (state) => ({
     saveFaves: state.saveFaves,
+    removeFaves: state.removeFaves
   }));
 
 
@@ -34,8 +36,9 @@ function Card({className, author, storyTitle, storyUrl, createdAt, createdId, he
       created_at_i: createdId,
     }
 
-    saveFaves(favesObject); 
-    setLike(!like);
+    setLike(like => like = !like);
+
+    !like ? saveFaves(favesObject) : removeFaves(favesObject);
   }
 
   function differenceDate() {
