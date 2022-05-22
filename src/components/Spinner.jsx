@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 function Spinner(props) {
   return (
-    <div className={`loader ${props.className}`}>Loading</div>
+    <div className={`loader ${props.className}`}></div>
     )
   }
 export default styled(Spinner)`
@@ -20,7 +20,7 @@ export default styled(Spinner)`
     border-top: 1.1em solid rgba(255, 255, 255, 0.2);
     border-right: 1.1em solid rgba(255, 255, 255, 0.2);
     border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-    border-left: 1.1em solid #1797ff;
+    border-left: 1.1em solid ${({theme}) => theme.colors.lightGray};
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);

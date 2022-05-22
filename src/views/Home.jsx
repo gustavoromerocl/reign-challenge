@@ -5,6 +5,8 @@ import useNewsStore from '../zustand/news-store';
 import shallow from "zustand/shallow";
 import Dropdown from '../components/Dropdown';
 import NewsList from '../components/NewsList';
+import styled from 'styled-components';
+import { CenterContainer } from '../theme';
 
 function Home(props) {
   const {
@@ -31,12 +33,14 @@ function Home(props) {
   }, [page, filter]);
 
   return (
-    <div>
+    <div className={props.className}>
         <Dropdown />
-        {isFetchingNews ? <Spinner /> : <NewsList data={news}/>}
+        {isFetchingNews ? <CenterContainer><Spinner /></CenterContainer> : <NewsList data={news}/>}
         {fetchNewsError && <div>Error 404 Not found</div>}
     </div>
   )
 }
 
-export default Home;
+export default styled(Home)`
+  height: 50vh;
+`;
