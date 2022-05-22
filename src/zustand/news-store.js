@@ -1,6 +1,6 @@
 /* https://zustand.surge.sh/ */
-import axios from 'axios';
 import create from 'zustand';
+import apiCall from './api'
 
 const newsStore = create((set, get) => ({
   isFetchingNews: false,
@@ -27,7 +27,7 @@ const newsStore = create((set, get) => ({
       /* Formateamos el estado para asegurarnos de que no tenga valores anteriores */
       set({ isFetchingNews: true, fetchNewsError: undefined, news: [] });
 
-      const { data } = await axios.get(`https://hn.algolia.com/api/v1/search_by_date?query=${filter}&page=${page}`);
+      const { data } = await apiCall.get(`/search_by_date?query=${filter}&page=${page}`);
       /**Filtramos el array de elementos con valores vacíos */
       const filterData = data.hits.filter(element => {
         return element.author !== null && element.story_title !== null && element.story_url !== null && element.created_at !== null;
