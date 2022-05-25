@@ -106,7 +106,7 @@ export let GlobalStyles = createGlobalStyle`
 /**Contenedor principal que da estructura al DOM del proyecto */
 export let LayoutContainer = styled.div`
 /**Se divide el viewport usando grid css */
-  min-height: 100vh;
+  max-height: 100vh;
 
   @media ${devices.mediumLaptop}{
     display: grid;
@@ -134,6 +134,7 @@ export let LayoutContainer = styled.div`
 
   & footer{
     position: fixed;
+    z-index: 5;
     width: 100%;
     padding: 30px 0;
     bottom: 0;

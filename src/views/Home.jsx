@@ -7,8 +7,14 @@ import Dropdown from '../components/Dropdown';
 import NewsList from '../components/NewsList';
 import styled from 'styled-components';
 import { CenterContainer } from '../theme';
+import Filter from '../components/Filter';
+
+import { useMediaPredicate } from "react-media-hook";
+import devices from '../theme/breakoints';
 
 function Home(props) {
+  const biggerThanMd = useMediaPredicate(`${devices.mediumLaptop}`);
+
   const {
     fetchNews,
     isFetchingNews,
@@ -34,7 +40,8 @@ function Home(props) {
 
   return (
     <div className={props.className}>
-        <Dropdown />
+        {biggerThanMd ? <Dropdown /> : <Filter />}
+        
         {isFetchingNews ? <CenterContainer><Spinner /></CenterContainer> : <NewsList data={news}/>}
         {fetchNewsError && <div>Error 404 Not found</div>}
     </div>
