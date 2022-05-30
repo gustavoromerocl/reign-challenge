@@ -124,6 +124,7 @@ Commits de trabajo:
 - axios v0.21.1
 - momentjs v2.29.3
 - zustand v4.0.0-rc.1
+- react-infinite-scroll-component v6.1.0
 
 ### Instalación local
 
@@ -149,6 +150,7 @@ Durante le programación de la pruebas unitarias tuve conflicto la versión actu
 - [https://github.com/tailwindlabs/heroicons]
 - [https://momentjs.com/]
 - [https://styled-components.com/]
+- [https://www.npmjs.com/package/react-infinite-scroll-component]
 
 ### Autor
 

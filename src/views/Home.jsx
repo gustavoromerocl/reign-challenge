@@ -11,6 +11,7 @@ import Filter from '../components/Filter';
 
 import { useMediaPredicate } from "react-media-hook";
 import devices from '../theme/breakoints';
+import InfiniteScroll from '../components/InfiniteScroll';
 
 function Home(props) {
   const biggerThanMd = useMediaPredicate(`${devices.mediumLaptop}`);
@@ -36,13 +37,13 @@ function Home(props) {
   /**Ejecuta la función fetchNews cuando se crea el componente */
   useEffect(() => {
     fetchNews();
-  }, [page, filter]);
+  }, [filter]);
 
   return (
     <div className={props.className}>
         {biggerThanMd ? <Dropdown /> : <Filter />}
         
-        {isFetchingNews ? <CenterContainer><Spinner /></CenterContainer> : <NewsList data={news}/>}
+        {isFetchingNews ? <CenterContainer><Spinner /></CenterContainer> : <InfiniteScroll data={news}/>} {/* <NewsList data={news}/> */}
         {fetchNewsError && <div>Error 404 Not found</div>}
     </div>
   )

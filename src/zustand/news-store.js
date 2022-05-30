@@ -9,14 +9,37 @@ const newsStore = create((set, get) => ({
   page: 1,
   /**Si existe un valor en local storage se lo asigna, si no por default sera angular*/
   filter: localStorage.getItem("filter") || 'angular',
-  setPage: (page) => set({page: page}),
+  setPage: async (page) => {
+    try{
+      /**Formateamos solo los errores ya que el fetching lo hace el componente del scroll infinito */
+      set({fetchNewsError: undefined}); 
+
+      /**Traemos el filtro y noticias actuales */
+      const currentNews = get().news;
+      const filter = get().filter;
+      
+      /**Actualizamos la página */
+      set({page: page});
+
+      /* Guardamos al respuesta del nuevo endpoint */
+      const { data } = await apiCall.get(`/search_by_date?query=${filter}&page=${page}`);
+  
+      // Actualizamos el stado de news
+      set({news: currentNews.concat(data.hits)})
+    }
+    catch(error){
+      set({fetchNewsError: error});
+    }
+
+  },
   setFilter: (filter) => {
     /**Seteamos el filtro en local storage */
     localStorage.setItem("filter", filter)
     /**Guardamos el valor actual en una variable */
     let localFilter = localStorage.getItem("filter");
-    /**Actualzamos el filtro local */
+    /**ActualIzamos el filtro Y la página*/
     set({filter: localFilter});
+    set({page: 1})
   },
   fetchNews: async () => {
     /**Se asignan valores del state con el método get */

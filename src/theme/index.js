@@ -41,7 +41,7 @@ export default {
       medium: '14px',
       big: '16px',
     }
-  }, 
+  },
   borders: {
     light: 'solid 1px #d6d6d6',
     medium: 'solid 1px #979797',
@@ -59,7 +59,7 @@ export default {
     heights: {
       verySmall: '16px',
       small: '32px',
-      medium: '90px',             
+      medium: '90px',
     },
     padding: {
       verySmall: '7px',
@@ -119,10 +119,10 @@ export let LayoutContainer = styled.div`
     z-index: 10;
     top: 0;
     height: 114px;
-    box-shadow: ${({theme}) => theme.shadows.leftBottom};
+    box-shadow: ${({ theme }) => theme.shadows.leftBottom};
     background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
-    color: ${({theme}) => theme.colors.mediumGray};
-    font-family: ${({theme}) => theme.fonts.family.brandTitle};
+    color: ${({ theme }) => theme.colors.mediumGray};
+    font-family: ${({ theme }) => theme.fonts.family.brandTitle};
     
     @media ${devices.mediumLaptop}{
       position: relative;
@@ -139,7 +139,13 @@ export let LayoutContainer = styled.div`
     padding: 30px 0;
     bottom: 0;
     background-color: white;
+    text-align: center;
 
+    a {
+      font-family: 'Roboto Regular';
+      font-size: ${({ theme }) => theme.fonts.size.medium};
+      color: ${({ theme }) => theme.colors.lightGray};
+    }
     @media ${devices.mediumLaptop}{
       padding: 20px 0;
     }
@@ -154,14 +160,14 @@ export let Container = styled.div`
   height: 100%;
   @media ${devices.mediumLaptop}{
     max-width: 100vw;
-    margin: ${ ({theme}) => theme.dims.margin.small };
+    margin: ${({ theme }) => theme.dims.margin.small};
   }
 `;
 
 export let Paragraph = styled.p`
   font-family: 'Roboto Regular';
-  font-size: ${({theme}) => theme.fonts.size.medium};
-  color: ${({theme}) => theme.colors.lightGray};
+  font-size: ${({ theme }) => theme.fonts.size.medium};
+  color: ${({ theme }) => theme.colors.lightGray};
 `;
 
 /**Flex containers */

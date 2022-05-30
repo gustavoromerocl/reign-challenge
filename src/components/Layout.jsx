@@ -3,8 +3,9 @@ import { LayoutContainer, Container as ContainerOverride } from '../theme';
 import styled from 'styled-components';
 import Header from './Header';
 import RadioButton from './RadioButton';
-import Pagination from './Pagination';
 import devices from '../theme/breakoints';
+import { useMediaPredicate } from "react-media-hook";
+
 
 /**Se sobreescribe el componente Container para alinear el logo en el encabezado, a su vez se asigna un alias para evitar conflictos de nombre */
 let HeaderContainer = styled(ContainerOverride)`
@@ -34,6 +35,8 @@ let HeadContainer = styled.div`
 `;
 
 export default function Layout(props) {
+  const biggerThanMd = useMediaPredicate(`${devices.mediumLaptop}`);
+
   return (
     <LayoutContainer className={props.className}>
       <nav>
@@ -51,7 +54,7 @@ export default function Layout(props) {
         </BodyContainer>
       </main>
       <footer>
-          <Pagination />
+        <a href='https://www.gustavoromero.cl/'>®gustavoromerocl</a>
       </footer>
     </LayoutContainer>
   )
