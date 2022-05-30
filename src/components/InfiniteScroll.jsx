@@ -6,8 +6,6 @@ import styled from 'styled-components';
 import shallow from 'zustand/shallow';
 import useNewsStore from '../zustand/news-store';
 import Card from './Card';
-import { useMediaPredicate } from "react-media-hook";
-import devices from '../theme/breakoints';
 
 const LoadingText = styled.h4`
   text-align: center;
@@ -18,7 +16,6 @@ const LoadingText = styled.h4`
 `;
 
 function InfiniteScrolling(props) {
-  const biggerThanMd = useMediaPredicate(`${devices.mediumLaptop}`);
 
   /* Zustand */
   const {
@@ -45,17 +42,18 @@ function InfiniteScrolling(props) {
         next={fetchMoreData}
         hasMore={true}
         loader={<LoadingText>Loading more...</LoadingText>}
-        height={biggerThanMd ? 400 : 1000}
+        height={500}
       >
         <div className='cards-container'>
           {/*Se mapea el array con la información de la api para contruir las cards con la info*/
-            news.map(({ author, story_title, story_url, created_at, created_at_i, story_id }) =>
-              <Card author={author}
-                storyTitle={story_title}
-                storyUrl={story_url}
-                createdAt={created_at}
-                key={`${created_at_i}-${story_id}`}
-                createdId={created_at_i}
+            news.map((el, index) =>
+              <Card author={el.author}
+                storyTitle={el.story_title}
+                storyUrl={el.story_url}
+                createdAt={el.created_at}
+                //Se interpola id_sptory con el index ya que genera conflicto con algunos elementos de el endpoint de vuejs
+                key={`${el.story_id}-${index}`}
+                createdId={el.created_at_i}
               />)
           }
         </div>

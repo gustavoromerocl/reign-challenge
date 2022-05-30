@@ -10,42 +10,52 @@ const newsStore = create((set, get) => ({
   /**Si existe un valor en local storage se lo asigna, si no por default sera angular*/
   filter: localStorage.getItem("filter") || 'angular',
   setPage: async (page) => {
-    try{
+    try {
       /**Formateamos solo los errores ya que el fetching lo hace el componente del scroll infinito */
-      set({fetchNewsError: undefined}); 
+      set({ fetchNewsError: undefined });
 
       /**Traemos el filtro y noticias actuales */
       const currentNews = get().news;
       const filter = get().filter;
-      
+
       /**Actualizamos la página */
-      set({page: page});
+      set({ page: page });
 
       /* Guardamos al respuesta del nuevo endpoint */
       const { data } = await apiCall.get(`/search_by_date?query=${filter}&page=${page}`);
-  
+
       // Actualizamos el stado de news
-      set({news: currentNews.concat(data.hits)})
+      set({ news: currentNews.concat(data.hits) })
     }
-    catch(error){
-      set({fetchNewsError: error});
+    catch (error) {
+      set({ fetchNewsError: error });
     }
 
   },
   setFilter: (filter) => {
-    /**Seteamos el filtro en local storage */
-    localStorage.setItem("filter", filter)
-    /**Guardamos el valor actual en una variable */
-    let localFilter = localStorage.getItem("filter");
-    /**ActualIzamos el filtro Y la página*/
-    set({filter: localFilter});
-    set({page: 1})
+    set({ isFetchingNews: true, fetchNewsError: undefined, news: [] });
+    try {
+      /**Seteamos el filtro en local storage */
+      localStorage.setItem("filter", filter)
+      /**Guardamos el valor actual en una variable */
+      let localFilter = localStorage.getItem("filter");
+      /**ActualIzamos el filtro Y la página*/
+      set({ filter: localFilter });
+      set({ page: 1 })
+    }
+    catch (error) {
+      set({ fetchNewsError: error })
+    }
+    finally {
+      set({ isFetchingNews: false });
+    }
+
   },
   fetchNews: async () => {
     /**Se asignan valores del state con el método get */
     const page = get().page;
     const filter = get().filter;
-    
+
     try {
       /* Formateamos el estado para asegurarnos de que no tenga valores anteriores */
       set({ isFetchingNews: true, fetchNewsError: undefined, news: [] });
@@ -56,13 +66,13 @@ const newsStore = create((set, get) => ({
         return element.author !== null && element.story_title !== null && element.story_url !== null && element.created_at !== null;
       });
 
-      set({news: filterData});
+      set({ news: filterData });
     }
     catch (error) {
-      set({fetchNewsError: error})
+      set({ fetchNewsError: error })
     }
     finally {
-      set({ isFetchingNews: false});
+      set({ isFetchingNews: false });
     }
   }
 }));

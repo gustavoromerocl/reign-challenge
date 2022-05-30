@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Header from './Header';
 import RadioButton from './RadioButton';
 import devices from '../theme/breakoints';
-import { useMediaPredicate } from "react-media-hook";
 
 
 /**Se sobreescribe el componente Container para alinear el logo en el encabezado, a su vez se asigna un alias para evitar conflictos de nombre */
@@ -35,7 +34,6 @@ let HeadContainer = styled.div`
 `;
 
 export default function Layout(props) {
-  const biggerThanMd = useMediaPredicate(`${devices.mediumLaptop}`);
 
   return (
     <LayoutContainer className={props.className}>

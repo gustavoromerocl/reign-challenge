@@ -7,7 +7,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import devices from './breakoints';
 
 /**Configuración de variables de estilo*/
-export default {
+const theme = {
   colors: {
     white: "#ffffff",
     softWhite: "#fcfcfc",
@@ -179,3 +179,5 @@ export let CenterContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export default theme;

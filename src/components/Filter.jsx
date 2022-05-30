@@ -94,8 +94,8 @@ function Filter(props) {
 export default styled(Filter)`
   position: absolute;
   z-index: 10;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 50%;

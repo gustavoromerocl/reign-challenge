@@ -4,7 +4,6 @@ import Spinner from '../components/Spinner';
 import useNewsStore from '../zustand/news-store';
 import shallow from "zustand/shallow";
 import Dropdown from '../components/Dropdown';
-import NewsList from '../components/NewsList';
 import styled from 'styled-components';
 import { CenterContainer } from '../theme';
 import Filter from '../components/Filter';
@@ -21,7 +20,6 @@ function Home(props) {
     isFetchingNews,
     fetchNewsError,
     news,
-    page,
     filter,
   } = useNewsStore((state) => ({
     /**Les asignamos a las variables creadas el state de la store de zustand */
@@ -37,18 +35,19 @@ function Home(props) {
   /**Ejecuta la función fetchNews cuando se crea el componente */
   useEffect(() => {
     fetchNews();
-  }, [filter]);
+  }, [filter, fetchNews]);
 
   return (
     <div className={props.className}>
         {biggerThanMd ? <Dropdown /> : <Filter />}
         
-        {isFetchingNews ? <CenterContainer><Spinner /></CenterContainer> : <InfiniteScroll data={news}/>} {/* <NewsList data={news}/> */}
+        {isFetchingNews ? <CenterContainer><Spinner /></CenterContainer> : <InfiniteScroll data={news}/>}
         {fetchNewsError && <div>Error 404 Not found</div>}
     </div>
   )
 }
 
 export default styled(Home)`
-  height: 50vh;
+  height: 60vh;
+  @media ${devices.mediumLaptop}{ height: 50vh; }
 `;
