@@ -56,17 +56,37 @@ const newsStore = create((set, get) => ({
     const page = get().page;
     const filter = get().filter;
 
+    // Funcion recursiva para validar que hayan el minimo de elementos necesarios para que arranque el scroll infinito
+    const filterAwait = async (filterData) => {
+      let acum = filterData.length;
+      let page = get().page;
+      //validamos el largo necesario
+      if (acum >= 20) return filterData;
+      
+      //Cambiamos de pagina para obtener nuevos elementos
+      set({ page: page + 1 });  
+      const { data } = await apiCall.get(`/search_by_date?query=${filter}&page=${page}`);
+
+      //concatenamos los arrays
+      filterData = filterData.concat(data.hits);
+      //Volvemos a ejecutar la función
+      return filterAwait(filterData);
+    }
+
     try {
       /* Formateamos el estado para asegurarnos de que no tenga valores anteriores */
       set({ isFetchingNews: true, fetchNewsError: undefined, news: [] });
 
       const { data } = await apiCall.get(`/search_by_date?query=${filter}&page=${page}`);
+
+
       /**Filtramos el array de elementos con valores vacíos */
       const filterData = data.hits.filter(element => {
         return element.author !== null && element.story_title !== null && element.story_url !== null && element.created_at !== null;
       });
 
-      set({ news: filterData });
+      const finalData = await filterAwait(filterData);
+      set({ news: finalData });
     }
     catch (error) {
       set({ fetchNewsError: error })

@@ -61,7 +61,7 @@ Por otro lado, la configuración de los providers utilizados en el main de la ap
 ##### Providers
 <img src="/public/docs/providers.png" alt="provider"/>
 
-Otro de los componentes importantes es Layout, el cual establece que partes de la app serán estáticas y las que no se reciben en el children, de esta manera además de el header puse el rabiobutton como estáticos, ya que se repite en ambas vistas del desafío. Mi intención era implementar react-virtualized para el infinite loader en lo contenido en los childrens, pero al instalar el paquete me generó conficto con la versión de react. 
+Otro de los componentes importantes es Layout, el cual establece que partes de la app serán estáticas y las que no se reciben en el children, de esta manera además de el header puse el rabiobutton como estáticos, ya que se repite en ambas vistas del desafío. Además, la carga principal de las noticias esta implementada con react-infinite-scroll-component. 
 
 ##### Layout
 <img src="/public/docs/layout.png" alt="provider"/>
